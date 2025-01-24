@@ -1,0 +1,27 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--list-item-bg);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  padding: 8px;
+}
+
+.feed + .feed {
+  margin-top: 16px;
+}
+
+.feed__control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.feed_state_empty {
+  text-align: center;
+}
+.feed_state_empty pre {
+  font-size: 32px;
+}

@@ -1,0 +1,13 @@
+node_modules
+
+# Log files
+*.log
+
+# Generated TypeScript files and build data
+tsconfig.tsbuildinfo
+
+# Dist files
+dist
+
+.gp.md
+web-ext-artifacts

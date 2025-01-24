@@ -1,0 +1,38 @@
+{
+  "description": "RSS Launchpad web extension: quickly add new subscriptions from websites",
+  "manifest_version": 2,
+  "name": "RSS Launchpad",
+  "author": "Ilya Malyavin",
+  "version": "0.1",
+  "homepage_url": "https://github.com/ilya-m32/rss-launchpad",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png"
+  },
+  "content_scripts": [],
+  "permissions": ["activeTab", "storage"],
+  "optional_permissions": ["clipboardWrite"],
+  "browser_action": {
+    "default_icon": "icons/icon-48.png",
+    "theme_icons": [
+      {
+        "light": "icons/icon-48.png",
+        "dark": "icons/icon-48.png",
+        "size": 48
+      },
+      {
+        "light": "icons/icon-32.png",
+        "dark": "icons/icon-32.png",
+        "size": 32
+      },
+      {
+        "light": "icons/icon-16.png",
+        "dark": "icons/icon-16.png",
+        "size": 16
+      }
+    ],
+    "default_title": "RSS Launchpad",
+    "default_popup": "dist/launchpad-popup.html"
+  }
+}

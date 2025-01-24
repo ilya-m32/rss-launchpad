@@ -1,0 +1,21 @@
+<template id="template-settings">
+  <button class="settings__button" aria-label="Settings">Settings</button>
+
+  <dialog class="settings__dialog">
+    <header class="settings__header">
+      <h3 class="settings__title">Settings</h3>
+      <button class="settings__close-button" aria-label="Close">&times;</button>
+    </header>
+    <form class="settings__form" method="dialog">
+      <label class="settings__label" for="theme-select">Theme:</label>
+      <select class="settings__theme-select" id="theme-select" name="themeMode">
+        <option name="auto"  value="auto">Auto (system preference)</option>
+        <option name="light" value="light">Light</option>
+        <option name="dark"  value="dark">Dark</option>
+      </select>
+      <footer class="settings__footer">
+        <button class="settings__submit" type="submit">Save & Apply</button>
+      </footer>
+    </form>
+  </dialog>
+</template>

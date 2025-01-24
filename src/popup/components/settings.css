@@ -1,0 +1,23 @@
+.settings__dialog {
+  background-color: var(--body-bg);
+  color: var(--body-text);
+
+  min-width: 80%;
+}
+
+.settings__title {
+  margin: 0 0 16px 0;
+  position: relative;
+}
+
+.settings__close-button {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.settings__footer {
+  display: flex;
+  justify-content: end;
+  margin-top: 16px;
+}

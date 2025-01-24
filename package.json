@@ -1,0 +1,26 @@
+{
+  "name": "rss-lauchpad",
+  "version": "0.0.1",
+  "description": "RSS Launchpad extension: quickly add new subscriptions from websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && ./build.bash",
+    "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\""
+  },
+  "keywords": [
+    "extension",
+    "browser",
+    "rss"
+  ],
+  "author": "Ilya Malyavin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.299",
+    "@types/firefox-webext-browser": "^120.0.4",
+    "@types/node": "^22.10.7",
+    "prettier": "3.4.2",
+    "typescript": "^5.7.3",
+    "web-ext": "^8.4.0"
+  }
+}

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && ./build.bash",
-    "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\""
+    "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\"",
+    "build-ext": "web-ext build -i screencast.gif -i src/"
   },
   "keywords": [
     "extension",

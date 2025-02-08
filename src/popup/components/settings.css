@@ -21,3 +21,27 @@
   justify-content: end;
   margin-top: 16px;
 }
+
+.settings__dialog label {
+  display: block;
+}
+
+.settings__form {
+  font-size: 0.75em;
+}
+
+.settings__error-message {
+  font-weight: 700;
+}
+
+.settings__form h3 {
+  margin: 8px 0 0 0;
+}
+
+.settings__group input {
+  width: 80%;
+}
+
+.settings__hint {
+  margin: 4px 0;
+}

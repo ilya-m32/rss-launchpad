@@ -12,7 +12,18 @@ export type Browser = typeof browser | typeof chrome;
 
 export type ThemeMode = "auto" | "light" | "dark";
 
+export type KnownOpeners =
+  | "newTab"
+  | "feedly"
+  | "inoreader"
+  | "tinyTinyRss"
+  | "nextcloud"
+  | "freshRss";
+
 export interface ISettings {
   themeMode: ThemeMode;
-  defaultOpener: "newTab";
+  defaultOpener: KnownOpeners;
+  tinyTinyRssUrl?: string;
+  nextcloudUrl?: string;
+  freshRssUrl?: string;
 }

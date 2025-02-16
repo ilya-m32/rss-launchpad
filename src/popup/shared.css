@@ -64,8 +64,19 @@ ol, ul {
 body {
   background-color: var(--body-bg);
   color: var(--body-text);
+}
 
-  min-width: 320px;
+@media (min-width: 720px) {
+  body {
+    min-width: 320px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    min-width: 480px;
+    min-height: 720px
+  }
 }
 
 li {
@@ -81,25 +92,27 @@ a:focus {
   color: var(--link-text-hover);
 }
 
+.as-button,
 button {
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-button {
   background-color: var(--button-bg);
   color: var(--button-text);
 }
 
+.as-button:hover,
 button:hover {
   background-color: var(--button-bg-hover);
+  color: var(--button-text);
 }
 
+.as-button:active,
 button:active {
   background-color: var(--button-bg);
+  color: var(--button-text);
 }
 
 li {

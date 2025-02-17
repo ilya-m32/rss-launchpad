@@ -55,3 +55,12 @@ export function deescapeHtml(str: string): string {
     (match) => deescapeMap[match],
   );
 }
+
+export function createByTemplate<T extends HTMLElement>(templateId: string): T {
+  const template = document.getElementById(templateId);
+  if (!(template instanceof HTMLTemplateElement)) {
+    throw Error(`Could not find template tag for #${templateId}`)
+  }
+
+  return template.content.cloneNode(true) as T;
+}

@@ -1,30 +1,44 @@
-import type { Feed } from "../types";
-import { deescapeHtml } from "../utils.js";
+import { generateFeedUrl } from "../openers/index.js";
+import { settings } from "../settings/index.js";
+import type { Feed, ISettings } from "../types";
+import { createByTemplate, deescapeHtml } from "../utils.js";
 import type { NotificationComponent } from "./notification";
 
 class FeedListComponentImpl extends HTMLElement {
-  private feedTemplate = document.getElementById(
-    "template-feed",
-  ) as HTMLTemplateElement;
+  private settings = settings;
 
-  private feedEmptyTemplate = document.getElementById(
-    "template-feed_state_empty",
-  ) as HTMLTemplateElement;
+  onConnect = () => {
+    const settingsState = this.settings.toJSON();
+    this.updateLinks(settingsState);
+  };
 
   connectedCallback() {
-    this.addEventListener("click", this.onFeedClick.bind(this));
+    this.addEventListener("click", this.onCopyFeedLink);
+    this.settings.subscribe(this.onConnect);
+    this.onConnect();
   }
 
-  onFeedClick(event: MouseEvent) {
+  disconnectedCallback() {
+    this.settings.unsubscribe(this.onConnect);
+  }
+
+  private onCopyFeedLink = (event: MouseEvent) => {
     const { target } = event;
     if (!(target instanceof HTMLButtonElement)) {
       return;
     }
+
     const link = target.dataset.link;
     if (!link) {
       return;
     }
 
+    if (target.classList.contains("feed__copy")) {
+      this.onCopyClick(link);
+    }
+  };
+
+  private onCopyClick(link: string) {
     const notification = document.createElement(
       "notification-component",
     ) as NotificationComponent;
@@ -40,37 +54,43 @@ class FeedListComponentImpl extends HTMLElement {
     );
   }
 
+  private updateLinks(settingState: ISettings) {
+    for (const elem of Array.from(
+      this.querySelectorAll(".feed__open"),
+    ) as Iterable<HTMLAnchorElement>) {
+      elem.href = generateFeedUrl(
+        settingState,
+        elem.dataset.baseUrl!,
+      ).toString();
+    }
+  }
+
   setFeeds(feeds: Feed[]) {
     this.render(feeds);
   }
 
   render(feeds: Feed[]) {
     if (!feeds.length) {
-      this.replaceChildren(this.feedEmptyTemplate.content.cloneNode(true));
+      this.replaceChildren(createByTemplate("template-feed_state_empty"));
       return;
     }
 
-    const list = document.createElement("ul");
-    list.className = "feeds-list";
-    list.setAttribute("role", "list");
+    const list = createByTemplate<HTMLUListElement>("template-feeds");
 
-    feeds.forEach((feed) => {
-      const listItem = this.feedTemplate.content.cloneNode(
-        true,
-      ) as HTMLLIElement;
+    for (const feed of feeds) {
+      const listItem = createByTemplate<HTMLLIElement>("template-feed__item");
 
-      listItem.firstElementChild!.classList.add(
-        `feed_type_${feed.type.toLowerCase()}`,
-      );
       listItem.querySelector(".feed__name")!.textContent =
         `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
-      listItem.querySelector(".feed__open")!.setAttribute("href", feed.href);
       listItem
         .querySelector(".feed__copy")!
         .setAttribute("data-link", feed.href);
+      listItem
+        .querySelector(".feed__open")!
+        .setAttribute("data-base-url", feed.href);
 
       list.appendChild(listItem);
-    });
+    }
 
     this.replaceChildren(list);
   }

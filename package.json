@@ -17,6 +17,7 @@
   ],
   "author": "Ilya Malyavin",
   "license": "MIT",
+  "dependencies": [],
   "devDependencies": {
     "@types/chrome": "^0.0.299",
     "@types/firefox-webext-browser": "^120.0.4",

@@ -8,6 +8,7 @@ tsconfig.tsbuildinfo
 
 # Dist files
 dist
+dist_ext
 
 .gp.md
 web-ext-artifacts

@@ -1,13 +1,13 @@
 {
   "name": "rss-lauchpad",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "RSS Launchpad extension: quickly add new subscriptions from websites",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && ./build.bash",
+    "build:ext": "web-ext build -s dist_ext",
     "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\"",
-    "build-ext": "web-ext build -i screencast.gif -i src/ -i *.bash",
     "lint": "web-ext lint"
   },
   "keywords": [

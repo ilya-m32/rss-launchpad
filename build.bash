@@ -20,3 +20,7 @@ cat $(find src/popup/ -name "*.css" | sort -t '/' -k2,2n -k2,2) > dist/styles.cs
 # ... and include templates for components
 content=$(cat $(find src/popup/components -name "*.html" | sort -t '/' -k2,2n -k2,2) | tr -d '\n')
 sed -i "s/<!-- __TEMPLATES__ -->/$(echo "$content" | sed 's/[&/\]/\\&/g')/" dist/launchpad-popup.html
+
+# Clean folder for extension
+mkdir -p dist_ext/
+cp -r dist manifest.json icons dist_ext/

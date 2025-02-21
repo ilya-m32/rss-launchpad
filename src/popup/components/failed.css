@@ -1,0 +1,14 @@
+.failed-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  padding: 16px 0;
+
+  min-height: 320px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}

@@ -43,11 +43,11 @@ Feel free to send PRs. To start developing this extension you need:
 - run `npm install` and then `npm run start` to get started!
 
 ## TODOs
-- i18n support
-- Setup CI/CD, for now thigns are pretty manual
-- Add basic integration 3rd party openers? (Open via URL + query params)
-- Add popular infer cases, like youtube with SPA navigation
-- Maybe add support for in-addons settings menu, too
+[ ] i18n support
+[ ] Setup CI/CD, for now thigns are pretty manual
+[x] Add basic integration 3rd party openers? (Open via URL + query params)
+[ ] Add popular infer cases, like youtube with SPA navigation
+[ ] Maybe add support for in-addons settings menu, too
 
 ## Similar projects
 - [Awesome RSS](https://github.com/shgysk8zer0/awesome-rss) - similar goal but abandoned, last commit in 2018

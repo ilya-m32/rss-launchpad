@@ -9,7 +9,7 @@ class FeedListComponentImpl extends HTMLElement {
 
   onConnect = () => {
     const settingsState = this.settings.toJSON();
-    this.updateLinks(settingsState);
+    this.updateOpenLinks(settingsState);
   };
 
   connectedCallback() {
@@ -59,7 +59,7 @@ class FeedListComponentImpl extends HTMLElement {
     );
   }
 
-  private updateLinks(settingState: ISettings) {
+  private updateOpenLinks(settingState: ISettings) {
     for (const elem of Array.from(
       this.querySelectorAll(".feed__open"),
     ) as Iterable<HTMLAnchorElement>) {
@@ -98,6 +98,7 @@ class FeedListComponentImpl extends HTMLElement {
     }
 
     this.replaceChildren(list);
+    this.updateOpenLinks(this.settings.toJSON());
   }
 }
 

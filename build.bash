@@ -23,4 +23,4 @@ sed -i "s/<!-- __TEMPLATES__ -->/$(echo "$content" | sed 's/[&/\]/\\&/g')/" dist
 
 # Clean folder for extension
 mkdir -p dist_ext/
-cp -r dist manifest.json icons dist_ext/
+cp -r dist manifest.json icons _locales dist_ext/

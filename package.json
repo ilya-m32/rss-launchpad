@@ -8,7 +8,10 @@
     "build": "tsc && ./build.bash",
     "build:ext": "web-ext build -s dist_ext",
     "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\"",
-    "lint": "web-ext lint"
+    "lint:ext": "web-ext lint",
+    "lint:src": "prettier . --check",
+    "lint:fix": "prettier . --write",
+    "lint": "npm run lint:src && npm run lint:ext"
   },
   "keywords": [
     "extension",

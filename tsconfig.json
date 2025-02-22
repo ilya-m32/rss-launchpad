@@ -19,18 +19,9 @@
     "experimentalDecorators": true,
     "sourceMap": false,
     "outDir": "./dist/",
-    "types": [
-      "node",
-      "firefox-webext-browser",
-      "chrome"
-    ],
+    "types": ["node", "firefox-webext-browser", "chrome"],
     "lib": ["es2015", "dom"]
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts"
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

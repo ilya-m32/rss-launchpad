@@ -55,7 +55,8 @@
   }
 }
 
-ol, ul {
+ol,
+ul {
   list-style-type: none;
   padding: 0;
   margin-bottom: 8px;
@@ -75,7 +76,7 @@ body {
 @media screen and (min-width: 1024px) {
   body {
     min-width: 480px;
-    min-height: 720px
+    min-height: 720px;
   }
 }
 

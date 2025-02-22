@@ -1,5 +1,6 @@
 import type { FeedListComponent } from "./components/feed.js";
 import type { PageSyncResult, Browser, ISettings, Feed } from "./types";
+import type { FailedStateComponent } from "./components/failed.js";
 import { settings } from "./settings/index.js";
 import { getBrowser, sanitizeFeeds } from "./utils.js";
 
@@ -37,16 +38,26 @@ function executeActiveTab(browserObj: Browser, opts: { file: string }) {
 
 function onResultReceived(results: PageSyncResult[] | undefined): void {
   let feeds: Feed[] = [];
-  const content = document.getElementById("content");
-  if (!content) {
+  const contentElem = document.getElementById("content");
+  if (!contentElem) {
     console.error("No content element to render");
     return;
   }
-  const listElement = content.querySelector("feed-list") as
+
+  if (!results) {
+    const failedStateElem = document.createElement(
+      "failed-state",
+    ) as FailedStateComponent;
+    failedStateElem.onRefresh = () => void initExtension();
+    contentElem.replaceChildren(failedStateElem);
+    return;
+  }
+
+  const listElement = contentElem.querySelector("feed-list") as
     | FeedListComponent
     | undefined;
 
-  const [result] = results || [];
+  const [result] = results;
   if (result) {
     feeds = sanitizeFeeds(result.feeds);
   } else {

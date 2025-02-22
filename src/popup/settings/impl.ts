@@ -6,6 +6,7 @@ export class Settings {
   private settings: ISettings = {
     themeMode: "auto",
     defaultOpener: "newTab",
+    useOpenerLinksToCopy: false,
   };
   private inited: boolean = false;
   private subscribers: Set<OnChange> = new Set();

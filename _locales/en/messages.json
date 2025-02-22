@@ -10,7 +10,7 @@
   },
 
   "feed.openFeedLink": {
-    "message": "Open feed link!!!!",
+    "message": "Open feed",
     "description": "Text of button which opens feed in a new tab, directly or via 3rd party service"
   },
 

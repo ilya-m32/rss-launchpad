@@ -45,3 +45,7 @@
 .settings__hint {
   margin: 4px 0;
 }
+
+.settings__use-opener-links-label {
+  display: inline-block;
+}

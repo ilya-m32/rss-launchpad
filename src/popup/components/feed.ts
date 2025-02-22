@@ -68,6 +68,16 @@ class FeedListComponentImpl extends HTMLElement {
         elem.dataset.baseUrl!,
       ).toString();
     }
+
+    for (const elem of Array.from(
+      this.querySelectorAll(".feed__copy"),
+    ) as Iterable<HTMLAnchorElement>) {
+      const baseUrl = elem.dataset.baseUrl!;
+
+      elem.dataset.link = settingState.useOpenerLinksToCopy
+        ? generateFeedUrl(settingState, baseUrl).toString()
+        : baseUrl;
+    }
   }
 
   setFeeds(feeds: Feed[]) {
@@ -89,7 +99,7 @@ class FeedListComponentImpl extends HTMLElement {
         `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
       listItem
         .querySelector(".feed__copy")!
-        .setAttribute("data-link", feed.href);
+        .setAttribute("data-base-url", feed.href);
       listItem
         .querySelector(".feed__open")!
         .setAttribute("data-base-url", feed.href);

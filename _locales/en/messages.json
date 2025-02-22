@@ -123,5 +123,9 @@
   "settings.errorMessageInvalidUrl": {
     "message": "Please enter a valid URL.",
     "description": "An error message displayed when the user enters an invalid URL in any of the URL input fields."
+  },
+  "settings.useOpenerLinksToCopy": {
+    "message": "Use opener link to copy:",
+    "description": "Label for checkbox setting if original or opener link should be copied"
   }
 }

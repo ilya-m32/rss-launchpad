@@ -26,4 +26,5 @@ export interface ISettings {
   tinyTinyRssUrl?: string;
   nextcloudUrl?: string;
   freshRssUrl?: string;
+  useOpenerLinksToCopy: boolean;
 }

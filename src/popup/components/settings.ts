@@ -2,6 +2,7 @@ import { settings } from "../settings/index.js";
 import type { ISettings, ThemeMode } from "../types";
 import { createByTemplate } from "../utils.js";
 
+const CHECKBOX_FIELDS = ["useOpenerLinksToCopy"] as const;
 const SELECT_FIELDS = ["themeMode", "defaultOpener"] as const;
 const INPUT_FIELDS = ["tinyTinyRssUrl", "nextcloudUrl", "freshRssUrl"] as const;
 const OPTION_TO_URL_NAME = {
@@ -67,6 +68,8 @@ class SettingsMenuImpl extends HTMLElement {
     const defaultOpener = (formData.get("defaultOpener") ??
       "newTab") as ISettings["defaultOpener"];
 
+    const useOpenerLinksToCopy = !!formData.get("useOpenerLinksToCopy");
+
     const inputUpdates = Object.fromEntries(
       INPUT_FIELDS.map((key) => [key, formData.get(key)]).filter(
         (pair) => pair[1],
@@ -74,7 +77,12 @@ class SettingsMenuImpl extends HTMLElement {
     ) as ISettings;
 
     this.settings
-      .setSetting({ ...inputUpdates, themeMode, defaultOpener })
+      .setSetting({
+        ...inputUpdates,
+        themeMode,
+        defaultOpener,
+        useOpenerLinksToCopy,
+      })
       .then(
         () => void this.closeDialog(),
         () => {
@@ -154,6 +162,15 @@ class SettingsMenuImpl extends HTMLElement {
       );
       if (input && settingsState[field]) {
         input.value = settingsState[field];
+      }
+    }
+
+    for (const field of CHECKBOX_FIELDS) {
+      const checkbox = this.querySelector<HTMLInputElement>(
+        `input[name="${field}"]`,
+      );
+      if (checkbox) {
+        checkbox.checked = settingsState[field];
       }
     }
   }

@@ -1,7 +1,7 @@
 import { generateFeedUrl } from "../openers/index.js";
 import { settings } from "../settings/index.js";
 import type { Feed, ISettings } from "../types";
-import { createByTemplate, deescapeHtml } from "../utils.js";
+import { createByTemplate, deescapeHtml, getTranslation } from "../utils.js";
 import type { NotificationComponent } from "./notification";
 
 class FeedListComponentImpl extends HTMLElement {
@@ -49,8 +49,8 @@ class FeedListComponentImpl extends HTMLElement {
     }
 
     navigator.clipboard.writeText(link).then(
-      () => notification.show("Link copied!", onClear),
-      () => notification.show("Failed to copy selected link", onClear),
+      () => notification.show(getTranslation("feed.onSuccessFeedLinkCopy"), onClear),
+      () => notification.show(getTranslation("feed.onFailedFeedLinkCopy"), onClear),
     );
   }
 

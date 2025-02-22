@@ -56,11 +56,41 @@ export function deescapeHtml(str: string): string {
   );
 }
 
+export function getTranslation(tag: string, subs?: string | string[]) {
+  const browser = getBrowser();
+  return browser.i18n.getMessage(tag, subs);
+}
+
+export function applyTranslations<T extends HTMLElement>(element: T): T {
+  for (const iter of Array.from(
+    element.querySelectorAll("[data-trans-text], [data-trans-aria-label]"),
+  ) as HTMLElement[]) {
+    if (iter.dataset.transText) {
+      const newText = getTranslation(iter.dataset.transText);
+      if (newText) {
+        iter.textContent = newText;
+      } else {
+        console.warn("Missing translation tag", iter.dataset.transText);
+      }
+    }
+
+    if (iter.dataset.transAriaLabel) {
+      const newLabel = getTranslation(iter.dataset.transAriaLabel);
+      if (newLabel) {
+        iter.ariaLabel = newLabel;
+      } else {
+        console.warn("Missing translation tag", iter.dataset.transAriaLabel);
+      }
+    }
+  }
+
+  return element;
+}
+
 export function createByTemplate<T extends HTMLElement>(templateId: string): T {
   const template = document.getElementById(templateId);
   if (!(template instanceof HTMLTemplateElement)) {
-    throw Error(`Could not find template tag for #${templateId}`)
+    throw Error(`Could not find template tag for #${templateId}`);
   }
-
-  return template.content.cloneNode(true) as T;
+  return applyTranslations(template.content.cloneNode(true) as T);
 }

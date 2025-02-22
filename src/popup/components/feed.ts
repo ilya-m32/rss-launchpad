@@ -49,8 +49,13 @@ class FeedListComponentImpl extends HTMLElement {
     }
 
     navigator.clipboard.writeText(link).then(
-      () => notification.show(getTranslation("feed.onSuccessFeedLinkCopy"), onClear),
-      () => notification.show(getTranslation("feed.onFailedFeedLinkCopy"), onClear),
+      () =>
+        notification.show(
+          getTranslation("feed.onSuccessFeedLinkCopy"),
+          onClear,
+        ),
+      () =>
+        notification.show(getTranslation("feed.onFailedFeedLinkCopy"), onClear),
     );
   }
 

@@ -14,7 +14,9 @@ import type { Feed, PageSyncResult } from "../types";
   function getFeedLinks() {
     const feeds = [];
 
-    const elements: HTMLLinkElement[] = Array.from(document.querySelectorAll(`link[rel="alternate"]`));
+    const elements: HTMLLinkElement[] = Array.from(
+      document.querySelectorAll(`link[rel="alternate"]`),
+    );
     for (const element of elements) {
       if (MIME_TYPES.has(element.type)) {
         feeds.push(getFeedFromElement(element));

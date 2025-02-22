@@ -1,55 +1,57 @@
 <template id="template-settings">
-  <button class="settings__button" aria-label="Settings">Settings</button>
+  <button class="settings__button" data-trans-text="settings.title" aria-label="Settings" data-trans-aria-label="settings.title">Settings</button>
 
   <dialog class="settings__dialog">
     <header class="settings__header">
-      <button class="settings__close-button" aria-label="Close">&times;</button>
+      <button class="settings__close-button" aria-label="Close" data-trans-aria-label="settings.closeButtonAriaLabel">&times;</button>
     </header>
     <form class="settings__form" method="dialog">
       <section class="settings__section">
-        <label for="theme-select">Theme:</label>
-        <select class="settings__theme-select" id="theme-select" name="themeMode">
-          <option name="auto"  value="auto">Auto (system preference)</option>
-          <option name="light" value="light">Light</option>
-          <option name="dark"  value="dark">Dark</option>
+        <label for="theme-select" id="theme-select-label" data-trans-text="settings.themeSelectLabel">Theme:</label>
+        <select class="settings__theme-select" id="theme-select" name="themeMode" aria-labelledby="theme-select-label">
+          <option value="auto" data-trans-text="settings.themeOptionAuto">Auto (system preference)</option>
+          <option value="light" data-trans-text="settings.themeOptionLight">Light</option>
+          <option value="dark" data-trans-text="settings.themeOptionDark">Dark</option>
         </select>
 
-        <label for="settings__default-opener">Default Opener:</label>
-        <select id="settings__default-opener" name="defaultOpener">
-          <option name="newTab" value="newTab">New tab</option>
-          <option name="feedly" value="feedly">feedly</option>
-          <option name="inoreader" value="inoreader">inoreader</option>
-          <option name="tinyTinyRss" value="tinyTinyRss" disabled>tinyTinyRss</option>
-          <option name="nextcloud" value="nextcloud" disabled>nextcloud</option>
-          <option name="freshRss" value="freshRss" disabled>freshRss</option>
+        <label for="settings__default-opener" id="default-opener-label" data-trans-text="settings.defaultOpenerLabel">Default Opener:</label>
+        <select id="settings__default-opener" name="defaultOpener" aria-labelledby="default-opener-label">
+          <option value="newTab" data-trans-text="settings.defaultOpenerNewTab">New tab</option>
+          <option value="feedly" data-trans-text="settings.defaultOpenerFeedly">feedly</option>
+          <option value="inoreader" data-trans-text="settings.defaultOpenerInoreader">inoreader</option>
+          <option value="tinyTinyRss" disabled data-trans-text="settings.defaultOpenerTinyTinyRss">tinyTinyRss</option>
+          <option value="nextcloud" disabled data-trans-text="settings.defaultOpenerNextcloud">nextcloud</option>
+          <option value="freshRss" disabled data-trans-text="settings.defaultOpenerFreshRss">freshRss</option>
         </select>
-        <p class="settings__hint">
+        <p class="settings__hint" id="settings-hint-unblock" data-trans-text="settings.hintUnblock">
           Fill settings below to unblock disabled options.
         </p>
       </section>
 
       <section class="settings__section settings__urls">
-        <h3>3rd-party openers</h3>
-        <p class="settings__hint">Configure alternative feed openers to handle specific feed types or keep empty if not needed.</p>
+        <h3 id="third-party-openers-title" data-trans-text="settings.thirdPartyOpenersTitle">3rd-party openers</h3>
+        <p class="settings__hint" id="settings-hint-configure" aria-labelledby="third-party-openers-title" data-trans-text="settings.thirdPartyOpenersHint">
+          Configure alternative feed openers to handle specific feed types or keep empty if not needed.
+        </p>
           <div class="settings__group">
-            <label for="tiny-tiny-rss-url">TinyTinyRSS URL:</label>
-            <input type="url" id="tiny-tiny-rss-url" name="tinyTinyRssUrl" placeholder="https://your-tiny-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty.">
-            <span class="settings__error-message" hidden>Please enter a valid TinyTinyRSS URL.</span>
+            <label for="tiny-tiny-rss-url" id="tiny-tiny-rss-url-label" data-trans-text="settings.tinyTinyRssUrlLabel">TinyTinyRSS URL:</label>
+            <input type="url" id="tiny-tiny-rss-url" name="tinyTinyRssUrl" placeholder="https://your-tiny-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty." aria-labelledby="tiny-tiny-rss-url-label">
+            <span class="settings__error-message" hidden data-trans-text="settings.errorMessageInvalidUrl">Please enter a valid TinyTinyRSS URL.</span>
           </div>
           <div class="settings__group">
-            <label for="nextcloud-url">Nextcloud News URL:</label>
-            <input type="url" id="nextcloud-url" name="nextcloudUrl" placeholder="https://your-nextcloud-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty.">
-            <span class="settings__error-message" hidden>Please enter a valid Nextcloud News URL.</span>
+            <label for="nextcloud-url" id="nextcloud-url-label" data-trans-text="settings.nextcloudUrlLabel">Nextcloud News URL:</label>
+            <input type="url" id="nextcloud-url" name="nextcloudUrl" placeholder="https://your-nextcloud-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty." aria-labelledby="nextcloud-url-label">
+            <span class="settings__error-message" hidden data-trans-text="settings.errorMessageInvalidUrl">Please enter a valid Nextcloud News URL.</span>
           </div>
           <div class="settings__group">
-            <label for="fresh-rss-url">FreshRSS URL:</label>
-            <input type="url" id="fresh-rss-url" name="freshRssUrl" placeholder="https://your-freshrss-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty.">
-            <span class="settings__error-message" hidden>Please enter a valid FreshRSS URL.</span>
+            <label for="fresh-rss-url" id="fresh-rss-url-label" data-trans-text="settings.freshRssUrlLabel">FreshRSS URL:</label>
+            <input type="url" id="fresh-rss-url" name="freshRssUrl" placeholder="https://your-freshrss-instance.com" pattern="https?://.*" title="Enter a valid URL or leave this field empty." aria-labelledby="fresh-rss-url-label">
+            <span class="settings__error-message" hidden data-trans-text="settings.errorMessageInvalidUrl">Please enter a valid FreshRSS URL.</span>
           </div>
       </section>
 
       <footer class="settings__footer">
-        <button class="settings__submit" type="submit">Save & Apply</button>
+        <button class="settings__submit" type="submit" data-trans-text="settings.saveAndApplyButton">Save & Apply</button>
       </footer>
     </form>
   </dialog>

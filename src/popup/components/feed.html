@@ -6,8 +6,18 @@
   <li class="feed" role="list">
     <span class="feed__name">title</span>
     <div class="feed__control">
-      <a href="" class="feed__open" target="_blank" rel="noopener noreferrer" aria-label="Open feed">Open feed</a>
-      <button class="feed__copy">Copy link</button>
+      <a
+        href="#"
+        data-trans-text="feed.openFeedLink"
+        data-trans-aria-label="feed.openFeedLink"
+        class="feed__open"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open feed"
+      >
+        Open Feed
+      </a>
+      <button class="feed__copy" data-trans-text="feed.copyLinkButton">Copy link</button>
     </div>
   </li>
 </template>
@@ -15,6 +25,6 @@
 <template id="template-feed_state_empty">
   <div class="feed_state_empty">
     <pre>:-(</pre>
-    <p>This tab has no RSS or ATOM feeds available</p>
+    <p data-trans-text="feed.noFeedsAvailable">This tab has no RSS or ATOM feeds available</p>
   </div>
 </template>

@@ -1,0 +1,127 @@
+{
+  "extensionName": {
+    "message": "RSS Launchpad: find feeds easily",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Lets you find RSS or Atom subscriptions in web pages easily",
+    "description": "Description of the extension."
+  },
+
+  "feed.openFeedLink": {
+    "message": "Open feed link!!!!",
+    "description": "Text of button which opens feed in a new tab, directly or via 3rd party service"
+  },
+
+  "feed.copyLinkButton": {
+    "message": "Copy link",
+    "description": "Label for the button that copies the link feed."
+  },
+
+  "feed.noFeedsAvailable": {
+    "message": "This tab has no RSS or ATOM feeds available",
+    "description": "This text is shown if there are no RSS or ATOM tabs"
+  },
+
+  "failed.fetchFeedsFailed": {
+    "message": "Failed to fetch feeds. Please check permissions.",
+    "description": "Error message displayed when the application cannot retrieve the feed list"
+  },
+
+  "failed.fetchFeedsFailedReloadButton": {
+    "message": "Try again.",
+    "description": "Button text for reloading feeds after a failed fetch attempt"
+  },
+
+  "feed.onSuccessFeedLinkCopy": {
+    "message": "Link copied!",
+    "description": "Successfully copied the link to the clipboard"
+  },
+
+  "feed.onFailedFeedLinkCopy": {
+    "message": "Failed to copy selected link. Check if Clipboard access is enabled in Firefox extension permissions",
+    "description": "Failed to copy the link to the clipboard"
+  },
+
+  "settings.title": {
+    "message": "Settings",
+    "description": "The title of the settings dialog."
+  },
+  "settings.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The aria-label for the button that closes the settings dialog."
+  },
+  "settings.themeSelectLabel": {
+    "message": "Theme:",
+    "description": "The label for the theme selection dropdown."
+  },
+  "settings.themeOptionAuto": {
+    "message": "Auto (system preference)",
+    "description": "An option in the theme selection dropdown for automatic theme selection based on system preferences."
+  },
+  "settings.themeOptionLight": {
+    "message": "Light",
+    "description": "An option in the theme selection dropdown for a light theme."
+  },
+  "settings.themeOptionDark": {
+    "message": "Dark",
+    "description": "An option in the theme selection dropdown for a dark theme."
+  },
+  "settings.defaultOpenerLabel": {
+    "message": "Default opener:",
+    "description": "A label describing select menu to choose default opener"
+  },
+
+  "settings.defaultOpenerNewTab": {
+    "message": "New tab"
+  },
+  "settings.defaultOpenerFeedly": {
+    "message": "feedly"
+  },
+  "settings.defaultOpenerInoreader": {
+    "message": "inoreader"
+  },
+  "settings.defaultOpenerTinyTinyRss": {
+    "message": "tinyTinyRss"
+  },
+  "settings.defaultOpenerNextcloud": {
+    "message": "nextcloud"
+  },
+  "settings.defaultOpenerFreshRss": {
+    "message": "freshRss"
+  },
+  "settings.hintUnblock": {
+    "message": "Fill settings below to unblock disabled options.",
+    "description": "A hint on how to unblock disabled options"
+  },
+  "settings.thirdPartyOpenersTitle": {
+    "message": "3rd-party openers",
+    "description": "Title for section with 3rd party openers config"
+  },
+  "settings.thirdPartyOpenersHint": {
+    "message": "Configure alternative feed openers to handle specific feed types or keep empty if not needed.",
+    "description": "Hint about the 3rd party openers section"
+  },
+
+  "settings.saveAndApplyButton": {
+    "message": "Save & Apply",
+    "description": "The text on the button to save and apply the selected settings."
+  },
+  "settings.tinyTinyRssUrlLabel": {
+    "message": "TinyTinyRSS URL:",
+    "description": "The label for the input field to enter the URL for TinyTinyRSS."
+  },
+  "settings.nextcloudUrlLabel": {
+    "message": "Nextcloud News URL:",
+    "description": "The label for the input field to enter the URL for Nextcloud News."
+  },
+  "settings.freshRssUrlLabel": {
+    "message": "FreshRSS URL:",
+    "description": "The label for the input field to enter the URL for FreshRSS."
+  },
+  "settings.errorMessageInvalidUrl": {
+    "message": "Please enter a valid URL.",
+    "description": "An error message displayed when the user enters an invalid URL in any of the URL input fields."
+  }
+}

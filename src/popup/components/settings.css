@@ -46,6 +46,6 @@
   margin: 4px 0;
 }
 
-.settings__use-opener-links-label {
+.settings__form label.settings__use-opener-links-label {
   display: inline-block;
 }

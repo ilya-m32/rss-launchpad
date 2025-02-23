@@ -24,3 +24,7 @@ sed -i "s/<!-- __TEMPLATES__ -->/$(echo "$content" | sed 's/[&/\]/\\&/g')/" dist
 # Clean folder for extension
 mkdir -p dist_ext/
 cp -r dist manifest.json icons _locales dist_ext/
+
+# Re-run prettier for easier manual review by extension reviewers
+cd dist_ext/
+npx prettier . --write

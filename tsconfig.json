@@ -3,7 +3,7 @@
     "target": "ES2022",
     "module": "preserve",
     "moduleResolution": "node",
-    "declaration": true,
+    "declaration": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

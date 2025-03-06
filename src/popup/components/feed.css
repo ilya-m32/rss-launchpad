@@ -1,3 +1,8 @@
+.feeds {
+  margin: 0;
+  padding: 8px;
+}
+
 .feed {
   display: flex;
   flex-direction: column;
@@ -26,4 +31,14 @@
 }
 .feed_state_empty pre {
   font-size: 32px;
+}
+
+
+@media (orientation: portrait) {
+  .feed__name {
+    max-width: 320px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }

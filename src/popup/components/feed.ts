@@ -90,7 +90,7 @@ class FeedListComponentImpl extends HTMLElement {
       return;
     }
 
-    const list = createByTemplate<HTMLUListElement>("template-feeds");
+    const list = createByTemplate<HTMLUListElement>("template-feeds").firstElementChild!;
 
     for (const feed of feeds) {
       const listItem = createByTemplate<HTMLLIElement>("template-feed__item");

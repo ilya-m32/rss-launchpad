@@ -2,7 +2,15 @@ import { createByTemplate } from "../utils.js";
 
 class FailedStateComponentImpl extends HTMLElement {
   public onRefresh?: () => void;
+  public setReason(reason: typeof this.reason) {
+    this.reason = reason;
 
+    if (this.isConnected) {
+      this.render();
+    }
+  }
+
+  private reason: "permission" | "other" = "other";
   private onClick = (event: Event) => {
     const target = event.target;
     if (!(target instanceof HTMLButtonElement)) {
@@ -19,7 +27,12 @@ class FailedStateComponentImpl extends HTMLElement {
   }
 
   render() {
-    this.replaceChildren(createByTemplate("failed-state"));
+    let template = "failed-state"
+    if (this.reason === "permission") {
+      template = "failed-state_type_no-access";
+    }
+
+    this.replaceChildren(createByTemplate(template));
   }
 }
 

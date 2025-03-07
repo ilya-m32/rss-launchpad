@@ -31,12 +31,21 @@ function executeActiveTab(browserObj: Browser, opts: { file: string }) {
         throw Error(String(browserObj.runtime.lastError));
       }
 
-      return results;
+      return { results };
     })
-    .catch((err) => void console.error("Error on script execution: ", err));
+    .catch((error) => {
+      console.error("Error on script execution: ", error);
+      return { error };
+    });
 }
 
-function onResultReceived(results: PageSyncResult[] | undefined): void {
+function onResultReceived(
+  payload:
+    | { results: PageSyncResult[] }
+    | { results?: undefined; error: Error | string },
+): void {
+  const { results } = payload;
+
   let feeds: Feed[] = [];
   const contentElem = document.getElementById("content");
   if (!contentElem) {
@@ -48,6 +57,9 @@ function onResultReceived(results: PageSyncResult[] | undefined): void {
     const failedStateElem = document.createElement(
       "failed-state",
     ) as FailedStateComponent;
+    failedStateElem.setReason(
+      String(payload.error).includes("permission") ? "permission" : "other",
+    );
     failedStateElem.onRefresh = () => void initExtension();
     contentElem.replaceChildren(failedStateElem);
     return;

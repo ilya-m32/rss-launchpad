@@ -30,8 +30,13 @@
   },
 
   "failed.fetchFeedsFailedReloadButton": {
-    "message": "Try again.",
+    "message": "Try again",
     "description": "Button text for reloading feeds after a failed fetch attempt"
+  },
+
+  "failed.fetchFeedsNoAccess": {
+    "message": "No access to this tab",
+    "description": "Disclaimer when there's no access to the current tab (related to permissions or a special page)"
   },
 
   "feed.onSuccessFeedLinkCopy": {

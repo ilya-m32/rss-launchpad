@@ -135,10 +135,12 @@ li + li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  height: 100%;
 }
 
 .app__footer {
-  padding: 8px;
+  padding: 12px;
   border-top: 1px solid var(--aux-accent-color);
 
   display: flex;

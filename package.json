@@ -1,6 +1,6 @@
 {
   "name": "rss-lauchpad",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "RSS Launchpad extension: quickly add new subscriptions from websites",
   "main": "index.js",
   "scripts": {

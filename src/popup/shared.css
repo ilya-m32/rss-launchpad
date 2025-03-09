@@ -61,6 +61,7 @@
 html {
   min-width: 320px;
   min-height: 480px;
+  height: 100%;
 
   display: flex;
 }

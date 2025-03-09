@@ -1,6 +1,6 @@
 # RSS Launchpad Extension
 
-Get in [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/rss-launchpad-find-feeds-easy/).
+Install from [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/rss-launchpad-find-feeds-easy/).
 
 ![](screencast.gif)
 

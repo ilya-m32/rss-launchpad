@@ -1,3 +1,7 @@
+failed-state {
+  height: 100%;
+}
+
 .failed-state {
   display: flex;
   justify-content: center;

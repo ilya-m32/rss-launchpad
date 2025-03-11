@@ -1,6 +1,8 @@
 feed-list {
   height: 100%;
   display: flex;
+
+  justify-content: center;
 }
 
 .feeds {
@@ -41,13 +43,15 @@ feed-list {
 }
 
 .feed_state_empty {
+  width: 90%;
+
   align-self: center;
   text-align: center;
 }
+
 .feed_state_empty pre {
   font-size: 32px;
 }
-
 
 @media (orientation: portrait) {
   .feed__name {

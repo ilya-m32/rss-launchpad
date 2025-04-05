@@ -30,6 +30,7 @@ export function sanitizeFeed(feed: Feed): Feed {
   const type = /application\/(rss|atom)\+\w/.exec(feed.type)?.[1];
 
   return {
+    extractType: feed.extractType,
     title: escapeHtml(feed.title),
     type: type ?? "UNKWN",
     href: new URL(feed.href).toString(),

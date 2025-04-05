@@ -1,8 +1,9 @@
 import type { FeedListComponent } from "./components/feed.js";
-import type { PageSyncResult, Browser, ISettings, Feed } from "./types";
+import type { ISettings, Feed, FeedResult } from "./types";
 import type { FailedStateComponent } from "./components/failed.js";
 import { settings } from "./settings/index.js";
 import { getBrowser, sanitizeFeeds } from "./utils.js";
+import { getPageFeeds } from "./extractors/index.js";
 
 // Reference in runtime to register components
 import "./components/index.js";
@@ -17,32 +18,11 @@ function initExtension() {
   onGlobalSettingsUpdate(settings.toJSON());
   settings.subscribe(onGlobalSettingsUpdate);
 
-  return executeActiveTab(browserObj, {
-    file: "injectable/page-inject.js",
-  }).then(onResultReceived);
-}
-
-function executeActiveTab(browserObj: Browser, opts: { file: string }) {
-  return browserObj.tabs
-    .executeScript(opts)
-    .then((results) => {
-      // This function is called after the script has been executed
-      if (browserObj.runtime.lastError || !results || !results.length) {
-        throw Error(String(browserObj.runtime.lastError));
-      }
-
-      return { results };
-    })
-    .catch((error) => {
-      console.error("Error on script execution: ", error);
-      return { error };
-    });
+  return getPageFeeds(browserObj).then(onResultReceived);
 }
 
 function onResultReceived(
-  payload:
-    | { results: PageSyncResult[] }
-    | { results?: undefined; error: Error | string },
+  payload: FeedResult
 ): void {
   const { results } = payload;
 
@@ -69,9 +49,8 @@ function onResultReceived(
     | FeedListComponent
     | undefined;
 
-  const [result] = results;
-  if (result) {
-    feeds = sanitizeFeeds(result.feeds);
+  if (results) {
+    feeds = sanitizeFeeds(results.feeds);
   } else {
     console.error("No result returned from the page");
   }

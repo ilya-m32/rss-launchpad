@@ -14,6 +14,7 @@ class FeedListComponentImpl extends HTMLElement {
 
   connectedCallback() {
     this.addEventListener("click", this.onCopyFeedLink);
+    this.addEventListener("click", this.onDisclaimerClick);
     this.settings.subscribe(this.onConnect);
     this.onConnect();
   }
@@ -38,24 +39,33 @@ class FeedListComponentImpl extends HTMLElement {
     }
   };
 
-  private onCopyClick(link: string) {
+  private sendNotification() {
     const notification = document.createElement(
       "notification-component",
     ) as NotificationComponent;
     this.appendChild(notification);
+    return notification;
+  }
 
-    function onClear() {
-      notification.remove();
+  private onDisclaimerClick = (event: MouseEvent) => {
+    const { target } = event;
+    if (
+      !(
+        target instanceof HTMLElement &&
+        target.classList.contains("feed__disclaimer")
+      )
+    ) {
+      return;
     }
 
+    this.sendNotification().show(getTranslation("feed.derivedFeedDisclaimer"));
+  };
+
+  private onCopyClick(link: string) {
+    const notification = this.sendNotification();
     navigator.clipboard.writeText(link).then(
-      () =>
-        notification.show(
-          getTranslation("feed.onSuccessFeedLinkCopy"),
-          onClear,
-        ),
-      () =>
-        notification.show(getTranslation("feed.onFailedFeedLinkCopy"), onClear),
+      () => notification.show(getTranslation("feed.onSuccessFeedLinkCopy")),
+      () => notification.show(getTranslation("feed.onFailedFeedLinkCopy")),
     );
   }
 
@@ -94,7 +104,9 @@ class FeedListComponentImpl extends HTMLElement {
     const list = feedsElem.querySelector<HTMLUListElement>(".feeds__group")!;
 
     for (const feed of feeds) {
-      const listItem = createByTemplate<HTMLLIElement>("template-feed__item");
+      const listItem = createByTemplate<HTMLLIElement>(
+        "template-feed__item",
+      ).querySelector(".feed")!;
 
       listItem.querySelector(".feed__name")!.textContent =
         `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
@@ -104,6 +116,7 @@ class FeedListComponentImpl extends HTMLElement {
       listItem
         .querySelector(".feed__open")!
         .setAttribute("data-base-url", feed.href);
+      listItem.classList.add(`feed_type_${feed.extractType}`);
 
       list.appendChild(listItem);
     }

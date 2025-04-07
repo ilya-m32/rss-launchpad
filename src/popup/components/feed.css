@@ -1,8 +1,9 @@
 feed-list {
-  height: 100%;
+  height: auto;
   display: flex;
 
   justify-content: center;
+  overflow: scroll;
 }
 
 .feeds {
@@ -22,6 +23,8 @@ feed-list {
 
 .feed {
   display: flex;
+  position: relative;
+
   flex-direction: column;
   background-color: var(--list-item-bg);
   border-radius: 4px;
@@ -29,6 +32,18 @@ feed-list {
   padding: 8px;
 
   min-width: 280px;
+}
+
+.feed .feed__disclaimer {
+  display: none;
+
+  position: absolute;
+  cursor: pointer;
+  right: 12px;
+}
+
+.feed.feed_type_derived .feed__disclaimer {
+  display: inline;
 }
 
 .feed + .feed {
@@ -55,7 +70,7 @@ feed-list {
 
 @media (orientation: portrait) {
   .feed__name {
-    max-width: 320px;
+    max-width: max(calc(100% - 32px), 320px);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

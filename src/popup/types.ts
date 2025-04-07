@@ -1,5 +1,6 @@
 export interface Feed {
   type: string;
+  extractType: 'direct' | 'derived';
   href: string;
   title: string;
 }
@@ -20,6 +21,10 @@ export type KnownOpeners =
   | "nextcloud"
   | "freshRss";
 
+export type PageStateResult = {
+  url: string;
+}
+
 export interface ISettings {
   themeMode: ThemeMode;
   defaultOpener: KnownOpeners;
@@ -28,3 +33,12 @@ export interface ISettings {
   freshRssUrl?: string;
   useOpenerLinksToCopy: boolean;
 }
+
+export interface IFeedExtractor {
+  match(url: string): boolean;
+  getScriptPath(): string;
+}
+
+export type FeedResult =
+  | { results: PageSyncResult; error?: undefined }
+  | { results?: undefined; error: Error | string };

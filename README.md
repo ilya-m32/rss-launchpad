@@ -44,6 +44,12 @@ reader app. I personally enjoy using [Thunderbird](https://www.thunderbird.net),
 - Minimize build step and code transformations
 - Don't be invasive and use minimal required permissions
 
+## Derived (unofficial) feeds
+This extension also supports unofficial feeds for some popular websites, like YouTube.
+It means that the feeds are not listed directly on the page but are instead derived from page content using official APIs.
+
+Unlike official feeds, unofficial ones may break if there are changes to the website or its RSS API interface.
+
 ## How to contribute?
 
 Feel free to send PRs. To start developing this extension you need:
@@ -54,10 +60,10 @@ Feel free to send PRs. To start developing this extension you need:
 
 ## TODOs
 
-- [ ] i18n support
+- [x] i18n support
 - [ ] Setup CI/CD, for now thigns are pretty manual
 - [x] Add basic integration 3rd party openers? (Open via URL + query params)
-- [ ] Add popular infer cases, like youtube with SPA navigation
+- [x] Add popular infer cases, like youtube with SPA navigation
 - [ ] Maybe add support for in-addons settings menu, too
 
 ## Similar projects

@@ -1,4 +1,4 @@
-import type { Feed, PageSyncResult } from "../types";
+import type { Feed, PageSyncResult } from "../../types";
 
 (function (): PageSyncResult {
   const MIME_TYPES = new Set(["application/rss+xml", "application/atom+xml"]);
@@ -6,6 +6,7 @@ import type { Feed, PageSyncResult } from "../types";
   function getFeedFromElement(element: HTMLLinkElement): Feed {
     return {
       type: element.type,
+      extractType: 'direct',
       href: element.href,
       title: element.title,
     };

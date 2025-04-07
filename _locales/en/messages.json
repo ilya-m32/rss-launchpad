@@ -49,6 +49,11 @@
     "description": "Failed to copy the link to the clipboard"
   },
 
+  "feed.derivedFeedDisclaimer": {
+    "message": "This feed was derived from page content and is not guaranteed to function.",
+    "description": "Derived feed disclaimer"
+  },
+
   "settings.title": {
     "message": "Settings",
     "description": "The title of the settings dialog."

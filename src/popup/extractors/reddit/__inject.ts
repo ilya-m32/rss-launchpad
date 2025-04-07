@@ -8,8 +8,6 @@ import type { Feed, PageSyncResult } from "../../types";
     const pathParts = currentUrl.pathname.split('/').filter(Boolean);
     const derivedFeeds: Feed[] = [];
 
-    console.log(pathParts);
-
     // Is it a home page?
     if (!pathParts.length) {
       const rssUrl = new URL(currentUrl.toString());

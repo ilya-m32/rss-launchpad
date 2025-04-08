@@ -2,10 +2,10 @@ import type { Feed, PageSyncResult } from "../../types";
 
 (function (): PageSyncResult {
   function deriveFeeds(): Feed[] {
-    const currentUrl = new URL(window.location.href, 'https://reddit.com');
+    const currentUrl = new URL(window.location.href, "https://reddit.com");
     // ignoring search params
-    currentUrl.search = '';
-    const pathParts = currentUrl.pathname.split('/').filter(Boolean);
+    currentUrl.search = "";
+    const pathParts = currentUrl.pathname.split("/").filter(Boolean);
     const derivedFeeds: Feed[] = [];
 
     // Is it a home page?
@@ -23,7 +23,7 @@ import type { Feed, PageSyncResult } from "../../types";
     }
 
     // is it a subreddit?
-    if (pathParts[0] === 'r' && pathParts[1]) {
+    if (pathParts[0] === "r" && pathParts[1]) {
       const rssUrl = new URL(currentUrl.toString());
       rssUrl.pathname = `/${pathParts[0]}/${pathParts[1]}/.rss`;
 
@@ -37,7 +37,7 @@ import type { Feed, PageSyncResult } from "../../types";
     }
 
     // is it a user profile
-    if (pathParts[0] === 'user' && pathParts[1]) {
+    if (pathParts[0] === "user" && pathParts[1]) {
       const rssUrl = new URL(currentUrl.toString());
       rssUrl.pathname = `/${pathParts[0]}/${pathParts[1]}/.rss`;
 

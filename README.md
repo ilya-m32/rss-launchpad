@@ -45,6 +45,7 @@ reader app. I personally enjoy using [Thunderbird](https://www.thunderbird.net),
 - Don't be invasive and use minimal required permissions
 
 ## Derived (unofficial) feeds
+
 This extension also supports unofficial feeds for some popular websites, like YouTube.
 It means that the feeds are not listed directly on the page but are instead derived from page content using official APIs.
 

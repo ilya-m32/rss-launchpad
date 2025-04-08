@@ -64,7 +64,9 @@ export function getTranslation(tag: string, subs?: string | string[]) {
 
 export function applyTranslations<T extends HTMLElement>(element: T): T {
   for (const iter of Array.from(
-    element.querySelectorAll("[data-trans-text], [data-trans-aria-label], [data-trans-attr-title]"),
+    element.querySelectorAll(
+      "[data-trans-text], [data-trans-aria-label], [data-trans-attr-title]",
+    ),
   ) as HTMLElement[]) {
     if (iter.dataset.transText) {
       const newText = getTranslation(iter.dataset.transText);
@@ -85,18 +87,17 @@ export function applyTranslations<T extends HTMLElement>(element: T): T {
     }
 
     for (const [key, value] of Object.entries(iter.dataset)) {
-      if (key.startsWith('transAttr')) {
+      if (key.startsWith("transAttr")) {
         const newAttrValue = value && getTranslation(value);
 
         if (!newAttrValue) {
-          console.warn("Missing translation tag", {key, value});
+          console.warn("Missing translation tag", { key, value });
           continue;
         }
-        const attrName = key.slice('transAttr'.length).toLowerCase();
+        const attrName = key.slice("transAttr".length).toLowerCase();
         iter.setAttribute(attrName, newAttrValue);
       }
     }
-
   }
 
   return element;

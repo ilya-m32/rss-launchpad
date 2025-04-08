@@ -4,11 +4,9 @@ on:
   push:
     tags:
       - "v*.*.*"
-    branches:
-      - master
 
 jobs:
-  build-and-lint:
+  build-and-publish:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
 

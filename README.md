@@ -66,7 +66,7 @@ Feel free to send PRs. To start developing this extension you need:
 ## TODOs
 
 - [x] i18n support
-- [ ] Setup CI/CD, for now thigns are pretty manual
+- [x] Setup CI/CD, for now thigns are pretty manual
 - [x] Add basic integration 3rd party openers? (Open via URL + query params)
 - [x] Add popular infer cases, like youtube with SPA navigation
 - [ ] Maybe add support for in-addons settings menu, too

@@ -1,6 +1,6 @@
 export interface Feed {
   type: string;
-  extractType: 'direct' | 'derived';
+  extractType: "direct" | "derived";
   href: string;
   title: string;
 }
@@ -23,7 +23,7 @@ export type KnownOpeners =
 
 export type PageStateResult = {
   url: string;
-}
+};
 
 export interface ISettings {
   themeMode: ThemeMode;

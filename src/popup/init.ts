@@ -21,9 +21,7 @@ function initExtension() {
   return getPageFeeds(browserObj).then(onResultReceived);
 }
 
-function onResultReceived(
-  payload: FeedResult
-): void {
+function onResultReceived(payload: FeedResult): void {
   const { results } = payload;
 
   let feeds: Feed[] = [];

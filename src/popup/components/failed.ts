@@ -27,7 +27,7 @@ class FailedStateComponentImpl extends HTMLElement {
   }
 
   render() {
-    let template = "failed-state"
+    let template = "failed-state";
     if (this.reason === "permission") {
       template = "failed-state_type_no-access";
     }

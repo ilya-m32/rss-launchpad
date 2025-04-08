@@ -6,7 +6,7 @@ import type { Feed, PageSyncResult } from "../../types";
   function getFeedFromElement(element: HTMLLinkElement): Feed {
     return {
       type: element.type,
-      extractType: 'direct',
+      extractType: "direct",
       href: element.href,
       title: element.title,
     };

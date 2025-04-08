@@ -3,7 +3,7 @@ name: Node.js CI publish
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*.*.*.*"
 
 jobs:
   build-and-publish:

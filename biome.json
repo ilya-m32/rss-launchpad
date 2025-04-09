@@ -1,0 +1,16 @@
+{
+  "linter": {
+    "rules": {
+      "complexity": {
+        "useArrowFunction": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "lineWidth": 120,
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  }
+}

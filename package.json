@@ -9,8 +9,8 @@
     "build:ext": "npm run build && web-ext build -s dist_ext",
     "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\"",
     "lint:ext": "web-ext lint -s dist_ext",
-    "lint:src": "prettier . --check",
-    "lint:fix": "prettier . --write",
+    "lint:src": "npx @biomejs/biome check .",
+    "lint:fix": "npx @biomejs/biome check --write .",
     "lint": "npm run lint:src && npm run lint:ext"
   },
   "keywords": [
@@ -20,8 +20,8 @@
   ],
   "author": "Ilya Malyavin",
   "license": "MIT",
-  "dependencies": [],
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/chrome": "^0.0.299",
     "@types/firefox-webext-browser": "^120.0.4",
     "@types/node": "^22.10.7",

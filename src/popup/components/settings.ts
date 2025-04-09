@@ -10,9 +10,7 @@ const OPTION_TO_URL_NAME = {
   nextcloud: "nextcloudUrl",
   freshRss: "freshRssUrl",
 } as const;
-const URL_NAME_TO_OPTION = Object.fromEntries(
-  Object.entries(OPTION_TO_URL_NAME).map(([k, v]) => [v, k]),
-);
+const URL_NAME_TO_OPTION = Object.fromEntries(Object.entries(OPTION_TO_URL_NAME).map(([k, v]) => [v, k]));
 
 class SettingsMenuImpl extends HTMLElement {
   private dialog: HTMLDialogElement | undefined;
@@ -41,22 +39,10 @@ class SettingsMenuImpl extends HTMLElement {
   }
 
   private attachEventListeners() {
-    this.querySelector(".settings__button")!.addEventListener(
-      "click",
-      this.openDialog.bind(this),
-    );
-    this.querySelector(".settings__close-button")!.addEventListener(
-      "click",
-      this.closeDialog.bind(this),
-    );
-    this.querySelector(".settings__form")!.addEventListener(
-      "formdata",
-      this.onSubmit,
-    );
-    this.querySelector(".settings__urls")!.addEventListener(
-      "change",
-      this.onUrlUpdate,
-    );
+    this.querySelector(".settings__button")?.addEventListener("click", this.openDialog.bind(this));
+    this.querySelector(".settings__close-button")?.addEventListener("click", this.closeDialog.bind(this));
+    this.querySelector(".settings__form")?.addEventListener("formdata", this.onSubmit);
+    this.querySelector(".settings__urls")?.addEventListener("change", this.onUrlUpdate);
   }
 
   private onSubmit = (event: Event) => {
@@ -65,15 +51,12 @@ class SettingsMenuImpl extends HTMLElement {
 
     // a bit ugly but should be good for now
     const themeMode = (formData.get("themeMode") ?? "auto") as ThemeMode;
-    const defaultOpener = (formData.get("defaultOpener") ??
-      "newTab") as ISettings["defaultOpener"];
+    const defaultOpener = (formData.get("defaultOpener") ?? "newTab") as ISettings["defaultOpener"];
 
     const useOpenerLinksToCopy = !!formData.get("useOpenerLinksToCopy");
 
     const inputUpdates = Object.fromEntries(
-      INPUT_FIELDS.map((key) => [key, formData.get(key)]).filter(
-        (pair) => pair[1],
-      ),
+      INPUT_FIELDS.map((key) => [key, formData.get(key)]).filter((pair) => pair[1]),
     ) as ISettings;
 
     this.settings
@@ -100,7 +83,7 @@ class SettingsMenuImpl extends HTMLElement {
   }
 
   closeDialog() {
-    if (this.dialog && this.dialog.open) {
+    if (this.dialog?.open) {
       this.dialog.close();
     }
   }
@@ -117,9 +100,7 @@ class SettingsMenuImpl extends HTMLElement {
       return;
     }
 
-    const optionElem = this.querySelector<HTMLOptionElement>(
-      `option[name="${optionName}"]`,
-    );
+    const optionElem = this.querySelector<HTMLOptionElement>(`option[name="${optionName}"]`);
     if (optionElem) {
       const invalidUrl = !hasValidUrl;
       optionElem.disabled = invalidUrl;
@@ -132,9 +113,7 @@ class SettingsMenuImpl extends HTMLElement {
   private updateOpenerOptions(settingsState: ISettings) {
     // Enable openers if filled correctly
     for (const [option, urlKey] of Object.entries(OPTION_TO_URL_NAME)) {
-      const optionElem = this.querySelector<HTMLOptionElement>(
-        `option[name="${option}"][disabled]`,
-      );
+      const optionElem = this.querySelector<HTMLOptionElement>(`option[name="${option}"][disabled]`);
 
       if (optionElem && settingsState[urlKey]) {
         optionElem.disabled = false;
@@ -144,12 +123,8 @@ class SettingsMenuImpl extends HTMLElement {
 
   private updateSelectedElements(settingsState: ISettings) {
     for (const field of SELECT_FIELDS) {
-      const selectElement = this.querySelector<HTMLSelectElement>(
-        `select[name="${field}"]`,
-      );
-      const optionElement = selectElement?.options.namedItem(
-        settingsState[field],
-      );
+      const selectElement = this.querySelector<HTMLSelectElement>(`select[name="${field}"]`);
+      const optionElement = selectElement?.options.namedItem(settingsState[field]);
 
       if (optionElement) {
         optionElement.selected = true;
@@ -157,18 +132,14 @@ class SettingsMenuImpl extends HTMLElement {
     }
 
     for (const field of INPUT_FIELDS) {
-      const input = this.querySelector<HTMLSelectElement>(
-        `input[name="${field}"]`,
-      );
+      const input = this.querySelector<HTMLSelectElement>(`input[name="${field}"]`);
       if (input && settingsState[field]) {
         input.value = settingsState[field];
       }
     }
 
     for (const field of CHECKBOX_FIELDS) {
-      const checkbox = this.querySelector<HTMLInputElement>(
-        `input[name="${field}"]`,
-      );
+      const checkbox = this.querySelector<HTMLInputElement>(`input[name="${field}"]`);
       if (checkbox) {
         checkbox.checked = settingsState[field];
       }

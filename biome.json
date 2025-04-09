@@ -2,15 +2,17 @@
   "linter": {
     "rules": {
       "complexity": {
-        "useArrowFunction": "off"
+        "useArrowFunction": "off",
+        "noForEach": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
       }
     }
   },
-  "javascript": {
-    "formatter": {
-      "lineWidth": 120,
-      "indentStyle": "space",
-      "indentWidth": 2
-    }
+  "formatter": {
+    "lineWidth": 120,
+    "indentStyle": "space",
+    "indentWidth": 2
   }
 }

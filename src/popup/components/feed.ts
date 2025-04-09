@@ -40,25 +40,18 @@ class FeedListComponentImpl extends HTMLElement {
   };
 
   private sendNotification() {
-    const notification = document.createElement(
-      "notification-component",
-    ) as NotificationComponent;
+    const notification = document.createElement("notification-component") as NotificationComponent;
     this.appendChild(notification);
     return notification;
   }
 
   private onDisclaimerClick = (event: MouseEvent) => {
     const { target } = event;
-    if (
-      !(
-        target instanceof HTMLElement &&
-        target.classList.contains("feed__disclaimer")
-      )
-    ) {
+    if (!(target instanceof HTMLElement && target.classList.contains("feed__disclaimer"))) {
       return;
     }
 
-    this.sendNotification().show(getTranslation("feed.derivedFeedDisclaimer"));
+    this.sendNotification().show(getTranslation("feed.derivedFeedDisclaimer"), void 0, 5000);
   };
 
   private onCopyClick(link: string) {
@@ -70,18 +63,11 @@ class FeedListComponentImpl extends HTMLElement {
   }
 
   private updateOpenLinks(settingState: ISettings) {
-    for (const elem of Array.from(
-      this.querySelectorAll(".feed__open"),
-    ) as Iterable<HTMLAnchorElement>) {
-      elem.href = generateFeedUrl(
-        settingState,
-        elem.dataset.baseUrl!,
-      ).toString();
+    for (const elem of Array.from(this.querySelectorAll(".feed__open")) as Iterable<HTMLAnchorElement>) {
+      elem.href = generateFeedUrl(settingState, elem.dataset.baseUrl!).toString();
     }
 
-    for (const elem of Array.from(
-      this.querySelectorAll(".feed__copy"),
-    ) as Iterable<HTMLAnchorElement>) {
+    for (const elem of Array.from(this.querySelectorAll(".feed__copy")) as Iterable<HTMLAnchorElement>) {
       const baseUrl = elem.dataset.baseUrl!;
 
       elem.dataset.link = settingState.useOpenerLinksToCopy
@@ -104,18 +90,11 @@ class FeedListComponentImpl extends HTMLElement {
     const list = feedsElem.querySelector<HTMLUListElement>(".feeds__group")!;
 
     for (const feed of feeds) {
-      const listItem = createByTemplate<HTMLLIElement>(
-        "template-feed__item",
-      ).querySelector(".feed")!;
+      const listItem = createByTemplate<HTMLLIElement>("template-feed__item").querySelector(".feed")!;
 
-      listItem.querySelector(".feed__name")!.textContent =
-        `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
-      listItem
-        .querySelector(".feed__copy")!
-        .setAttribute("data-base-url", feed.href);
-      listItem
-        .querySelector(".feed__open")!
-        .setAttribute("data-base-url", feed.href);
+      listItem.querySelector(".feed__name")!.textContent = `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
+      listItem.querySelector(".feed__copy")?.setAttribute("data-base-url", feed.href);
+      listItem.querySelector(".feed__open")?.setAttribute("data-base-url", feed.href);
       listItem.classList.add(`feed_type_${feed.extractType}`);
 
       list.appendChild(listItem);

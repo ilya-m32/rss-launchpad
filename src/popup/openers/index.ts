@@ -38,10 +38,7 @@ const serviceUrlGenerators: Record<KnownOpeners, Opener> = {
   },
 };
 
-export function generateFeedUrl(
-  settingsState: ISettings,
-  feedUrl: string,
-): URL {
+export function generateFeedUrl(settingsState: ISettings, feedUrl: string): URL {
   const opener = serviceUrlGenerators[settingsState.defaultOpener];
   return opener(feedUrl, settingsState);
 }

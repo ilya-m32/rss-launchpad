@@ -1,13 +1,7 @@
-import type {
-  Browser,
-  FeedResult,
-  IFeedExtractor,
-  PageStateResult,
-  PageSyncResult,
-} from "../types";
+import type { Browser, FeedResult, IFeedExtractor, PageStateResult, PageSyncResult } from "../types";
 import directFeedExtractor from "./direct/index.js";
-import youtubeDerivedExtractor from "./youtube/index.js";
 import redditDerivedExtractor from "./reddit/index.js";
+import youtubeDerivedExtractor from "./youtube/index.js";
 
 const DERIVED_FEED_EXTRACTORS: IFeedExtractor[] = [
   // Add more here
@@ -18,19 +12,14 @@ const DERIVED_FEED_EXTRACTORS: IFeedExtractor[] = [
 export async function getPageFeeds(browserObj: Browser): Promise<FeedResult> {
   const pageState = await getPageState(browserObj);
 
-  const feedsResult = await fetchFeedsByExecutor(
-    browserObj,
-    directFeedExtractor,
-  );
+  const feedsResult = await fetchFeedsByExecutor(browserObj, directFeedExtractor);
   // if the direct feed requests failed, whole workflow is likely to be broken
   if (feedsResult.error || !feedsResult.results) {
     return feedsResult;
   }
 
   const pageFeedResults = await Promise.all(
-    getMatchingFeedExtractors(pageState).map(
-      fetchFeedsByExecutor.bind(void 0, browserObj),
-    ),
+    getMatchingFeedExtractors(pageState).map(fetchFeedsByExecutor.bind(void 0, browserObj)),
   );
 
   // Enrich feed output
@@ -55,10 +44,7 @@ async function getPageState(browserObj: Browser): Promise<PageStateResult> {
   );
 }
 
-function executeActiveTab<TResult>(
-  browserObj: Browser,
-  opts: { file: string },
-) {
+function executeActiveTab<TResult>(browserObj: Browser, opts: { file: string }) {
   return browserObj.tabs
     .executeScript(opts)
     .then((results) => {
@@ -75,10 +61,7 @@ function executeActiveTab<TResult>(
     });
 }
 
-async function fetchFeedsByExecutor(
-  browserObj: Browser,
-  extractor: IFeedExtractor,
-): Promise<FeedResult> {
+async function fetchFeedsByExecutor(browserObj: Browser, extractor: IFeedExtractor): Promise<FeedResult> {
   const output = await executeActiveTab<PageSyncResult>(browserObj, {
     file: extractor.getScriptPath(),
   });

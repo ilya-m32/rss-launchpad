@@ -11,7 +11,7 @@ import type { Feed, PageSyncResult } from "../../types";
     // Is it a home page?
     if (!pathParts.length) {
       const rssUrl = new URL(currentUrl.toString());
-      rssUrl.pathname = rssUrl.pathname + ".rss";
+      rssUrl.pathname = `${rssUrl.pathname}.rss`;
       const href = rssUrl.toString();
 
       derivedFeeds.push({

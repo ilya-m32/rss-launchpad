@@ -4,11 +4,11 @@ export function getBrowser(): Browser {
   if (typeof browser !== "undefined") {
     return browser;
     // Chrome is the only who does not support browser, ugh
-  } else if (typeof chrome !== "undefined") {
-    return chrome;
-  } else {
-    throw new Error("Unsupported browser");
   }
+  if (typeof chrome !== "undefined") {
+    return chrome;
+  }
+  throw new Error("Unsupported browser");
 }
 
 const escapeMap: { [char: string]: string } = {
@@ -18,9 +18,7 @@ const escapeMap: { [char: string]: string } = {
   '"': "&quot;",
   "'": "&#39;",
 };
-const deescapeMap = Object.fromEntries(
-  Object.entries(escapeMap).map(([a, b]) => [b, a]),
-);
+const deescapeMap = Object.fromEntries(Object.entries(escapeMap).map(([a, b]) => [b, a]));
 
 export function escapeHtml(str: string): string {
   return str.replace(/[&<>"']/g, (m) => escapeMap[m]);
@@ -51,10 +49,7 @@ export function sanitizeFeeds(inputFeeds: Feed[]): Feed[] {
 }
 
 export function deescapeHtml(str: string): string {
-  return str.replace(
-    /&amp;|&lt;|&gt;|&quot;|&#039;|&#x2F;/g,
-    (match) => deescapeMap[match],
-  );
+  return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;|&#x2F;/g, (match) => deescapeMap[match]);
 }
 
 export function getTranslation(tag: string, subs?: string | string[]) {
@@ -64,9 +59,7 @@ export function getTranslation(tag: string, subs?: string | string[]) {
 
 export function applyTranslations<T extends HTMLElement>(element: T): T {
   for (const iter of Array.from(
-    element.querySelectorAll(
-      "[data-trans-text], [data-trans-aria-label], [data-trans-attr-title]",
-    ),
+    element.querySelectorAll("[data-trans-text], [data-trans-aria-label], [data-trans-attr-title]"),
   ) as HTMLElement[]) {
     if (iter.dataset.transText) {
       const newText = getTranslation(iter.dataset.transText);

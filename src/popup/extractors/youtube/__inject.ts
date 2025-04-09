@@ -4,9 +4,7 @@ import type { Feed, PageSyncResult } from "../../types";
   const BASE_URL = "https://www.youtube.com/feeds/videos.xml";
 
   function deriveChannelFeed(): Feed[] {
-    const hrefElements = Array.from(
-      document.querySelectorAll<HTMLLinkElement>("a[href]"),
-    );
+    const hrefElements = Array.from(document.querySelectorAll<HTMLLinkElement>("a[href]"));
     const derivedFeeds = new Map<string, Feed>();
 
     for (const elem of hrefElements) {

@@ -6,7 +6,7 @@ class NotificationComponentImpl extends HTMLElement {
     this.className = "notification";
   }
 
-  show(text: string, timeout = 3000, onClear?: Function) {
+  show(text: string, onClear?: () => void, timeout = 3000) {
     this.textContent = text;
     this.style.opacity = "1";
     this.style.transition = "opacity 0.5s, top 0.5s";

@@ -9,15 +9,11 @@
     "build:ext": "npm run build && web-ext build -s dist_ext",
     "start": "npm run build && web-ext run --devtools -u \"https://en.wikipedia.org/wiki/Main_Page\"",
     "lint:ext": "web-ext lint -s dist_ext",
-    "lint:src": "npx @biomejs/biome check .",
-    "lint:fix": "npx @biomejs/biome check --write .",
+    "lint:src": "biome check .",
+    "lint:fix": "biome check --write .",
     "lint": "npm run lint:src && npm run lint:ext"
   },
-  "keywords": [
-    "extension",
-    "browser",
-    "rss"
-  ],
+  "keywords": ["extension", "browser", "rss"],
   "author": "Ilya Malyavin",
   "license": "MIT",
   "devDependencies": {
@@ -25,7 +21,6 @@
     "@types/chrome": "^0.0.299",
     "@types/firefox-webext-browser": "^120.0.4",
     "@types/node": "^22.10.7",
-    "prettier": "3.4.2",
     "typescript": "^5.7.3",
     "web-ext": "^8.4.0"
   }

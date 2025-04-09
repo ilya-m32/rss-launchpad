@@ -1,9 +1,9 @@
-import type { FeedListComponent } from "./components/feed.js";
-import type { ISettings, Feed, FeedResult } from "./types";
 import type { FailedStateComponent } from "./components/failed.js";
-import { settings } from "./settings/index.js";
-import { getBrowser, sanitizeFeeds } from "./utils.js";
+import type { FeedListComponent } from "./components/feed.js";
 import { getPageFeeds } from "./extractors/index.js";
+import { settings } from "./settings/index.js";
+import type { Feed, FeedResult, ISettings } from "./types";
+import { getBrowser, sanitizeFeeds } from "./utils.js";
 
 // Reference in runtime to register components
 import "./components/index.js";
@@ -32,20 +32,14 @@ function onResultReceived(payload: FeedResult): void {
   }
 
   if (!results) {
-    const failedStateElem = document.createElement(
-      "failed-state",
-    ) as FailedStateComponent;
-    failedStateElem.setReason(
-      String(payload.error).includes("permission") ? "permission" : "other",
-    );
+    const failedStateElem = document.createElement("failed-state") as FailedStateComponent;
+    failedStateElem.setReason(String(payload.error).includes("permission") ? "permission" : "other");
     failedStateElem.onRefresh = () => void initExtension();
     contentElem.replaceChildren(failedStateElem);
     return;
   }
 
-  const listElement = contentElem.querySelector("feed-list") as
-    | FeedListComponent
-    | undefined;
+  const listElement = contentElem.querySelector("feed-list") as FeedListComponent | undefined;
 
   if (results) {
     feeds = sanitizeFeeds(results.feeds);
@@ -57,6 +51,5 @@ function onResultReceived(payload: FeedResult): void {
 }
 
 function onGlobalSettingsUpdate(state: ISettings) {
-  document.querySelector("body")!.className =
-    `theme theme-mode_${state.themeMode}`;
+  document.querySelector("body")!.className = `theme theme-mode_${state.themeMode}`;
 }

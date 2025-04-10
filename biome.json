@@ -1,0 +1,18 @@
+{
+  "linter": {
+    "rules": {
+      "complexity": {
+        "useArrowFunction": "off",
+        "noForEach": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      }
+    }
+  },
+  "formatter": {
+    "lineWidth": 120,
+    "indentStyle": "space",
+    "indentWidth": 2
+  }
+}

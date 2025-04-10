@@ -8,7 +8,7 @@ export class Settings {
     defaultOpener: "newTab",
     useOpenerLinksToCopy: false,
   };
-  private inited: boolean = false;
+  private inited = false;
   private subscribers: Set<OnChange> = new Set();
 
   constructor(private browser: Browser) {}
@@ -67,10 +67,7 @@ export class Settings {
         this.updateSettingsState(update);
       })
       .catch((error) => {
-        console.error(
-          `Error saving ${JSON.stringify(update)} update to storage:`,
-          error,
-        );
+        console.error(`Error saving ${JSON.stringify(update)} update to storage:`, error);
       });
   }
 

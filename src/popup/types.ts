@@ -13,13 +13,7 @@ export type Browser = typeof browser | typeof chrome;
 
 export type ThemeMode = "auto" | "light" | "dark";
 
-export type KnownOpeners =
-  | "newTab"
-  | "feedly"
-  | "inoreader"
-  | "tinyTinyRss"
-  | "nextcloud"
-  | "freshRss";
+export type KnownOpeners = "newTab" | "feedly" | "inoreader" | "tinyTinyRss" | "nextcloud" | "freshRss";
 
 export type PageStateResult = {
   url: string;

@@ -53,7 +53,7 @@ Unlike official feeds, unofficial ones may break if there are changes to the web
 
 If you wish to contribute by adding a new website, you need to create a new extractor
 (similar to [youtube](https://github.com/ilya-m32/rss-launchpad/tree/master/src/popup/extractors/youtube/) extractor)
-and add it to the [list](https://github.com/ilya-m32/rss-launchpad/blob/master/src/popup/extractors/index.ts#L15).
+and add it to the [list](https://github.com/ilya-m32/rss-launchpad/blob/master/src/popup/extractors/index.ts#L7).
 
 ## How to contribute?
 

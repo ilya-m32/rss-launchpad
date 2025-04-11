@@ -10,14 +10,13 @@ const DERIVED_FEED_EXTRACTORS: IFeedExtractor[] = [
 ] as const;
 
 export async function getPageFeeds(browserObj: Browser): Promise<FeedResult> {
-  const pageState = await getPageState(browserObj);
-
   const feedsResult = await fetchFeedsByExecutor(browserObj, directFeedExtractor);
   // if the direct feed requests failed, whole workflow is likely to be broken
   if (feedsResult.error || !feedsResult.results) {
     return feedsResult;
   }
 
+  const pageState = await getPageState(browserObj);
   const pageFeedResults = await Promise.all(
     getMatchingFeedExtractors(pageState).map(fetchFeedsByExecutor.bind(void 0, browserObj)),
   );

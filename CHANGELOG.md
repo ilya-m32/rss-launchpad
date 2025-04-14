@@ -1,3 +1,7 @@
+# 0.11.0
+
+Fixed 3rd party opener URL settings restoration.
+
 # 0.3
 
 First public release.

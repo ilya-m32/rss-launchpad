@@ -7,6 +7,10 @@ export class Settings {
     themeMode: "auto",
     defaultOpener: "newTab",
     useOpenerLinksToCopy: false,
+    // quickfix for settings restore: move to a schema-based settings approach
+    tinyTinyRssUrl: "",
+    nextcloudUrl: "",
+    freshRssUrl: "",
   };
   private inited = false;
   private subscribers: Set<OnChange> = new Set();

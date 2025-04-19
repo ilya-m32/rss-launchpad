@@ -1,6 +1,6 @@
 import type { Browser, FeedResult, IFeedExtractor, PageStateResult, PageSyncResult } from "../types";
-import directFeedExtractor from "./direct/index.js";
 import { DERIVED_FEED_EXTRACTORS } from "./derived-extractors.js";
+import directFeedExtractor from "./direct/index.js";
 
 export async function getPageFeeds(browserObj: Browser): Promise<FeedResult> {
   const feedsResult = await fetchFeedsByExecutor(browserObj, directFeedExtractor);

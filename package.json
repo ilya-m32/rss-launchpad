@@ -1,7 +1,11 @@
 {
   "name": "rss-lauchpad",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "RSS Launchpad extension: quickly add new subscriptions from websites",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilya-m32/rss-launchpad.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

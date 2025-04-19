@@ -1,13 +1,6 @@
 import type { Browser, FeedResult, IFeedExtractor, PageStateResult, PageSyncResult } from "../types";
 import directFeedExtractor from "./direct/index.js";
-import redditDerivedExtractor from "./reddit/index.js";
-import youtubeDerivedExtractor from "./youtube/index.js";
-
-const DERIVED_FEED_EXTRACTORS: IFeedExtractor[] = [
-  // Add more here
-  youtubeDerivedExtractor,
-  redditDerivedExtractor,
-] as const;
+import { DERIVED_FEED_EXTRACTORS } from "./derived-extractors.js";
 
 export async function getPageFeeds(browserObj: Browser): Promise<FeedResult> {
   const feedsResult = await fetchFeedsByExecutor(browserObj, directFeedExtractor);
@@ -39,6 +32,9 @@ async function getPageState(browserObj: Browser): Promise<PageStateResult> {
   return (
     output.results?.[0] ?? {
       url: "https://unknown/",
+      siteType: {
+        isWordpressBased: false,
+      },
     }
   );
 }
@@ -68,6 +64,6 @@ async function fetchFeedsByExecutor(browserObj: Browser, extractor: IFeedExtract
   return output.results ? { results: output.results[0] } : output;
 }
 
-function getMatchingFeedExtractors({ url }: { url: string }) {
-  return DERIVED_FEED_EXTRACTORS.filter((extractor) => extractor.match(url));
+function getMatchingFeedExtractors(pageState: PageStateResult) {
+  return DERIVED_FEED_EXTRACTORS.filter((extractor) => extractor.match(pageState));
 }

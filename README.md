@@ -51,9 +51,14 @@ It means that the feeds are not listed directly on the page but are instead deri
 
 Unlike official feeds, unofficial ones may break if there are changes to the website or its RSS API interface.
 
+Supported sites:
+- YouTube
+- Reddit
+- Wordpress-based blogs
+
 If you wish to contribute by adding a new website, you need to create a new extractor
 (similar to [youtube](https://github.com/ilya-m32/rss-launchpad/tree/master/src/popup/extractors/youtube/) extractor)
-and add it to the [list](https://github.com/ilya-m32/rss-launchpad/blob/master/src/popup/extractors/index.ts#L7).
+and add it to the [list](https://github.com/ilya-m32/rss-launchpad/blob/master/src/popup/extractors/derived-extractors.ts).
 
 ## How to contribute?
 

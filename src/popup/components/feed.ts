@@ -1,7 +1,7 @@
 import { generateFeedUrl } from "../openers/index.js";
 import { settings } from "../settings/index.js";
 import type { Feed, ISettings } from "../types";
-import { createByTemplate, deescapeHtml, getTranslation } from "../utils.js";
+import { createByTemplate, getTranslation } from "../utils.js";
 import type { NotificationComponent } from "./notification";
 
 class FeedListComponentImpl extends HTMLElement {
@@ -92,7 +92,7 @@ class FeedListComponentImpl extends HTMLElement {
     for (const feed of feeds) {
       const listItem = createByTemplate<HTMLLIElement>("template-feed__item").querySelector(".feed")!;
 
-      listItem.querySelector(".feed__name")!.textContent = `[${feed.type.toUpperCase()}] ${deescapeHtml(feed.title)}`;
+      listItem.querySelector(".feed__name")!.textContent = `[${feed.type.toUpperCase()}] ${feed.title}`;
       listItem.querySelector(".feed__copy")?.setAttribute("data-base-url", feed.href);
       listItem.querySelector(".feed__open")?.setAttribute("data-base-url", feed.href);
       listItem.classList.add(`feed_type_${feed.extractType}`);

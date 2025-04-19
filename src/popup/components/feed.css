@@ -68,11 +68,9 @@ feed-list {
   font-size: 32px;
 }
 
-@media (orientation: portrait) {
-  .feed__name {
-    max-width: max(calc(100% - 32px), 320px);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+.feed__name {
+  max-width: max(calc(100% - 32px), 320px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

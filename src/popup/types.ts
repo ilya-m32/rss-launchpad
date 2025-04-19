@@ -17,6 +17,9 @@ export type KnownOpeners = "newTab" | "feedly" | "inoreader" | "tinyTinyRss" | "
 
 export type PageStateResult = {
   url: string;
+  siteType: {
+    isWordpressBased: boolean;
+  };
 };
 
 export interface ISettings {
@@ -29,7 +32,7 @@ export interface ISettings {
 }
 
 export interface IFeedExtractor {
-  match(url: string): boolean;
+  match(pageState: PageStateResult): boolean;
   getScriptPath(): string;
 }
 

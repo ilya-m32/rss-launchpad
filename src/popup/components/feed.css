@@ -69,8 +69,12 @@ feed-list {
 }
 
 .feed__name {
-  max-width: max(calc(100% - 32px), 320px);
+  max-width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.feed.feed_type_derived .feed__name {
+  max-width: calc(100% - 32px);
 }

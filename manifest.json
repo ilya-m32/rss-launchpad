@@ -3,7 +3,7 @@
   "description": "__MSG_extensionDescription__",
   "manifest_version": 2,
   "author": "Ilya Malyavin",
-  "version": "0.12",
+  "version": "0.13",
   "homepage_url": "https://github.com/ilya-m32/rss-launchpad",
   "default_locale": "en",
   "icons": {

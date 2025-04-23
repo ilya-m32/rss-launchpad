@@ -24,6 +24,8 @@
   --link-text-dark-hover: #0a84ff;
   --link-text-dark-visited: #b200ff;
   --aux-accent-color-dark: #5f6670;
+
+  --viewport-width: max(100vw, 420px);
   font-family: system-ui, ui-sans-serif;
 }
 
@@ -59,7 +61,7 @@
  * Popup default sizes for Desktop
  */
 html {
-  min-width: 320px;
+  min-width: var(--viewport-width);
   min-height: 480px;
   height: 100%;
 
@@ -156,4 +158,13 @@ li + li {
 
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (orientation: portrait) {
+  body .app__content-wrapper {
+    /**
+     * Fix for firefox mobile: limit width to 100vw ho prevent horizontal scrolling
+     */
+    width: 100vw;
+  }
 }

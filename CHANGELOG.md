@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### Version 0.14.0
+
+[v0.14.0](+https://github.com/ilya-m32/rss-launchpad/releases/tag/0.14.0)
+
 ### Version 0.12.0
 
 [v0.12.0](+https://github.com/ilya-m32/rss-launchpad/releases/tag/0.12.0)
